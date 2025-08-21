@@ -8,7 +8,7 @@ set -euo pipefail
 
 help() {
   cat <<EOF
-Usage: $0 {login|edit|new|help}
+Usage: $(basename "$0") {login|edit|new|help}
 
 Commands:
   login          Log in to memos.
