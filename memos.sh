@@ -52,10 +52,10 @@ login() {
 
   source .env
 
-  res=$(api_call GET "memos")
-  jq -c '.memos[]' <<<"$res" >/dev/null
+  res=$(api_call GET "auth/sessions/current")
+  display_name=$(jq -c -r '.user.displayName' <<<"$res")
   if [ $? -eq 0 ]; then
-    echo "Login successful"
+    echo "Login successful as: '${display_name}'"
   else
     echo "Login error, check the provided values and try again."
   fi
